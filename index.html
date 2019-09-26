@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="three.min.js"></script>
+    <script src="OrbitControls.js"></script>
+    <title>Document</title>
+<body>
+    <style>
+        body{margin:0;padding:0;}
+    </style>
+    <script>
+        let scene, camera, renderer
+        function init(){
+            
+            scene = new THREE.Scene
+            
+            camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 45, 3000)
+            camera.position.set(-900, -200, -900)
+
+            renderer = new THREE.WebGLRenderer({antialias: true})
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            document.body.appendChild(renderer.domElement)
+
+
+            let controls = new THREE.OrbitControls(camera)
+            controls.addEventListener('change', renderer)
+
+            let materialArray = []
+            let textture_bk = new THREE.TextureLoader().load('arid2_bk.jpg')
+            let textture_dn = new THREE.TextureLoader().load('arid2_dn.jpg')
+            let textture_ft = new THREE.TextureLoader().load('arid2_ft.jpg')
+            let textture_lf = new THREE.TextureLoader().load('arid2_lf.jpg')
+            let textture_rt = new THREE.TextureLoader().load('arid2_rt.jpg')
+            let textture_up = new THREE.TextureLoader().load('arid2_up.jpg')
+        }
+        init() 
+    </script>
+</body>
+</html>
